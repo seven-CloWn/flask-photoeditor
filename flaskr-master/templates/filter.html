@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<center>
+<head> 
+<title>相机特效</title>   
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+ <center>
+    <h1>相机特效系统</h1>
+    <center>
+            <div class=metanav>
+            {% if not session.logged_in %}
+            <br />
+              <a href="{{ url_for('login') }}" >登录</a>
+              <br><br/>
+              <a href="{{ url_for('register') }}">注册</a>
+            {% else %}
+              <a href="{{ url_for('logout') }}">退出</a>
+            {% endif %}
+            </div>
+          </center>
+           {% for message in get_flashed_messages() %}
+             <div class=flash>{{ message }}</div>
+            {% endfor %}
+            {% block body %}{% endblock %}
+
+    
+      <a href="facedetect">
+    <button id="directNextpage" style="background: #f7be68 ">人脸关键点检测</button></a>
+    <a href="white">
+      <button id="directNextpage" style="background: #f7be68 ">美白</button></a>
+      <a href="mopi">
+        <button id="directNextpage" style="background: #f7be68 ">磨皮</button></a>
+          <a href="paste">
+            <button id="directNextpage" style="background: #f7be68 ">贴纸</button></a>
+            <a href="up_photo">
+                <button id="directNextpage" style="background: #f7be68 ">返回</button></a>
+</center>

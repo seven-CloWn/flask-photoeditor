@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<title>相机特效</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class=page >
+  <h1>相机特效系统</h1>
+  <center>
+  <div class=metanav>
+  {% if not session.logged_in %}
+  <br />
+    <a href="{{ url_for('login') }}" >登录</a>
+    <br><br/>
+    <a href="{{ url_for('register') }}">注册</a>
+  {% else %}
+    <a href="{{ url_for('logout') }}">退出</a>
+  {% endif %}
+  </div>
+</center>
+ {% for message in get_flashed_messages() %}
+   <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+</div>
+</body>
+</html>
